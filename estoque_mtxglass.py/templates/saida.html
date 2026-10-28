@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar saída - MTXGLASS</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f0f3f7;
+            color: #193858;
+        }
+
+        header {
+            background: #193858;
+            color: white;
+            text-align: center;
+            padding: 28px 15px;
+        }
+
+        header h1 {
+            margin: 15px 0 20px;
+        }
+
+        main {
+            max-width: 650px;
+            margin: 30px auto;
+            padding: 0 15px;
+        }
+
+        .cartao {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        label {
+            display: block;
+            margin: 15px 0 7px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        .botao {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 18px;
+            border: none;
+            border-radius: 6px;
+            background: #193858;
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .voltar {
+            background: #64748b;
+            margin-left: 8px;
+        }
+
+        .mensagens {
+            margin-top: 15px;
+            color: #193858;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>MTXGLASS</h1>
+        <p>Registrar saída de estoque</p>
+    </header>
+
+    <main>
+        <section class="cartao">
+            <h2>Nova saída</h2>
+            <p>Informe o código do vidro e a quantidade retirada.</p>
+
+            <form action="/saida" method="POST">
+                <label for="codigo">Código do vidro</label>
+                <input
+                    type="text"
+                    id="codigo"
+                    name="codigo"
+                    required
+                >
+
+                <label for="quantidade">Quantidade retirada</label>
+                <input
+                    type="number"
+                    id="quantidade"
+                    name="quantidade"
+                    min="1"
+                    step="1"
+                    required
+                >
+
+                <button type="submit" class="botao">
+                    Registrar saída
+                </button>
+
+                <a href="/" class="botao voltar">Voltar</a>
+            </form>
+
+            {% with mensagens = get_flashed_messages() %}
+                {% if mensagens %}
+                    <div class="mensagens">
+                        {% for mensagem in mensagens %}
+                            <p>{{ mensagem }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+        </section>
+    </main>
+</body>
+</html>

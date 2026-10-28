@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Vidro - MTXGLASS</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f1f4f8;
+            color: #243247;
+        }
+
+        header {
+            background: #17365d;
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        main {
+            max-width: 650px;
+            margin: 30px auto;
+            padding: 0 18px;
+        }
+
+        .painel {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px #00000010;
+        }
+
+        label {
+            display: block;
+            margin-top: 16px;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        button, .voltar {
+            display: inline-block;
+            margin-top: 22px;
+            padding: 12px 18px;
+            border: none;
+            border-radius: 6px;
+            background: #17365d;
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .voltar {
+            background: #64748b;
+            margin-left: 8px;
+        }
+
+        button:hover {
+            background: #24518a;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>MTXGLASS</h1>
+        <p>Cadastro de vidros</p>
+    </header>
+
+    <main>
+        <section class="painel">
+            <h2>Novo vidro</h2>
+            <p>Preencha os dados do vidro para cadastrá-lo no estoque.</p>
+
+            <form action="/cadastrar" method="POST">
+                <label for="codigo">Código do vidro</label>
+                <input type="text" id="codigo" name="codigo" required>
+
+                <label for="tipo">Tipo de vidro</label>
+                <input type="text" id="tipo" name="tipo" required>
+
+                <label for="espessura">Espessura (mm)</label>
+                <input type="number" id="espessura" name="espessura"
+                       min="0.01" step="any" required>
+
+                <label for="largura">Largura (cm)</label>
+                <input type="number" id="largura" name="largura"
+                       min="0.01" step="any" required>
+
+                <label for="altura">Altura (cm)</label>
+                <input type="number" id="altura" name="altura"
+                       min="0.01" step="any" required>
+
+                <label for="quantidade">Quantidade inicial</label>
+                <input type="number" id="quantidade" name="quantidade"
+                       min="0" step="1" required>
+
+                <button type="submit">Cadastrar vidro</button>
+                <a href="/" class="voltar">Voltar</a>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

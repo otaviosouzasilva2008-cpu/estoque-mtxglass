@@ -1,0 +1,43 @@
+[
+    {
+        "tipo": "entrada",
+        "codigo": "TESTE01",
+        "vidro": "Incolor",
+        "quantidade": 1
+    },
+    {
+        "tipo": "entrada",
+        "codigo": "TESTE01",
+        "vidro": "Incolor",
+        "quantidade": 2,
+        "data_hora": "24/10/2026 14:09:27"
+    },
+    {
+        "tipo": "entrada",
+        "codigo": "TESTE01",
+        "vidro": "Incolor",
+        "quantidade": 1,
+        "data_hora": "25/10/2026 08:53:52"
+    },
+    {
+        "tipo": "entrada",
+        "codigo": "WEBTESTE01",
+        "vidro": "Incolor",
+        "quantidade": 1,
+        "data_hora": "26/10/2026 15:18:21"
+    },
+    {
+        "tipo": "saida",
+        "codigo": "WEBTESTE01",
+        "vidro": "Incolor",
+        "quantidade": 1,
+        "data_hora": "26/10/2026 15:19:44"
+    },
+    {
+        "tipo": "perda",
+        "codigo": "WEBTESTE01",
+        "vidro": "Incolor",
+        "quantidade": 1,
+        "data_hora": "26/10/2026 15:54:55"
+    }
+]

@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estoque MTXGLASS</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f1f4f8;
+            color: #243247;
+        }
+
+        header {
+            background-color: #17365d;
+            color: white;
+            padding: 28px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0 0 10px;
+        }
+
+        header p {
+            margin: 0;
+            color: #dce8f5;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .painel {
+            background-color: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px #00000010;
+            margin-bottom: 25px;
+        }
+
+        .botoes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            margin-top: 22px;
+        }
+
+        .botao {
+            display: block;
+            padding: 16px;
+            background-color: #e8eff8;
+            color: #17365d;
+            text-decoration: none;
+            text-align: center;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .botao:hover {
+            background-color: #d4e2f3;
+        }
+
+        .tabela-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 18px;
+        }
+
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid #e2e8f0;
+            text-align: left;
+            white-space: nowrap;
+        }
+
+        th {
+            background-color: #e8eff8;
+            color: #17365d;
+        }
+
+        .vazio {
+            color: #64748b;
+            padding: 18px 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #65748b;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>MTXGLASS</h1>
+        <p>Sistema de Controle de Estoque de Vidros</p>
+    </header>
+
+    <main>
+        <section class="painel">
+            <h2>Bem-vindo ao sistema</h2>
+            <p>Gerencie o estoque de vidros de maneira simples e organizada.</p>
+
+            <div class="botoes">
+                <a href="/cadastrar" class="botao">Cadastrar vidro</a>
+                <a href="#estoque" class="botao">Consultar estoque</a>
+                <a href="/entrada" class="botao">Registrar entrada</a>
+                <a href="/saida" class="botao">Registrar saída</a>
+                <a href="/perdas" class="botao">Registrar perdas</a>
+                <a href="/historico" class="botao">Histórico de movimentações</a>
+            </div>
+        </section>
+
+        <section class="painel" id="estoque">
+            <h2>Estoque de vidros</h2>
+            <p>Confira os vidros cadastrados no sistema.</p>
+
+<form action="/" method="GET" style="margin: 20px 0;">
+    <label for="busca"><strong>Buscar vidro pelo código</strong></label>
+
+    <div style="display: flex; gap: 10px; margin-top: 8px;">
+        <input
+            type="text"
+            id="busca"
+            name="busca"
+            placeholder="Digite o código do vidro"
+            value="{{ busca }}"
+            style="flex: 1; min-width: 0; padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px;"
+        >
+
+        <button
+            type="submit"
+            style="padding: 12px 18px; background: #17365d; color: white; border: none; border-radius: 6px; cursor: pointer;"
+        >
+            Buscar
+        </button>
+    </div>
+
+    <a href="/#estoque" style="display: inline-block; margin-top: 10px; color: #17365d;">
+        Mostrar todos os vidros
+    </a>
+</form>
+
+            {% if estoque %}
+                <div class="tabela-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Tipo</th>
+                                <th>Espessura (mm)</th>
+                                <th>Largura (cm)</th>
+                                <th>Altura (cm)</th>
+                                <th>Quantidade</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for vidro in estoque %}
+                                <tr>
+                                    <td>{{ vidro.codigo }}</td>
+                                    <td>{{ vidro.tipo }}</td>
+                                    <td>{{ vidro.espessura }}</td>
+                                    <td>{{ vidro.largura }}</td>
+                                    <td>{{ vidro.altura }}</td>
+                                    <td>{{ vidro.quantidade }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <p class="vazio">Nenhum vidro cadastrado.</p>
+            {% endif %}
+        </section>
+    </main>
+
+    <footer>
+        Sistema de estoque MTXGLASS
+    </footer>
+</body>
+</html>

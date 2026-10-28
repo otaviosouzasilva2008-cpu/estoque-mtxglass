@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histórico de movimentações - MTXGLASS</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f0f3f7;
+            color: #193858;
+        }
+
+        header {
+            background: #193858;
+            color: white;
+            text-align: center;
+            padding: 28px 15px;
+        }
+
+        header h1 {
+            margin: 15px 0 20px;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 15px;
+        }
+
+        .cartao {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 12px;
+            border-bottom: 1px solid #dbe2ea;
+        }
+
+        th {
+            background: #e8eef5;
+        }
+
+        .botao {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 18px;
+            border-radius: 6px;
+            background: #193858;
+            color: white;
+            text-decoration: none;
+        }
+
+        .vazio {
+            margin-top: 20px;
+            color: #64748b;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>MTXGLASS</h1>
+        <p>Histórico de movimentações do estoque</p>
+    </header>
+
+    <main>
+        <section class="cartao">
+            <h2>Movimentações registradas</h2>
+            <p>Consulte as entradas e saídas de vidros do estoque.</p>
+
+            {% if historico %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tipo</th>
+                            <th>Código</th>
+                            <th>Vidro</th>
+                            <th>Quantidade</th>
+                            <th>Data e hora</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for movimento in historico|reverse %}
+                            <tr>
+                                <td>{{ movimento.get("tipo", "-") }}</td>
+                                <td>{{ movimento.get("codigo", "-") }}</td>
+                                <td>{{ movimento.get("vidro", "-") }}</td>
+                                <td>{{ movimento.get("quantidade", "-") }}</td>
+                                <td>{{ movimento.get("data_hora", "Não informada") }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p class="vazio">Nenhuma movimentação registrada.</p>
+            {% endif %}
+
+            <a href="/" class="botao">Voltar ao início</a>
+        </section>
+    </main>
+</body>
+</html>
